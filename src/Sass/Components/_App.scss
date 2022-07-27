@@ -1,0 +1,8 @@
+@use '../core/variables' as v;
+
+.App {
+    &__title {
+        color: white;
+        font-size: 3rem;
+    }
+}

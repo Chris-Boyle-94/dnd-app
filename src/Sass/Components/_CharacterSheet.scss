@@ -1,27 +1,9 @@
 @use '../core/variables' as v;
 
-.Calculator {
-    width: 20%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
+.CharacterSheet {
+    color: white;
 
-    &__title {
-        font-size: 2rem;
-        text-align: center;
-    }
-
-    &__form {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-
-        &__input {
-            background-color: v.$yellow;
-        }
-
-        &__select {
-            align-self: flex-end;
-        }
+    &__header {
+        
     }
 }
