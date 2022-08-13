@@ -1,4 +1,6 @@
-const Display = ({ playerInfo, setShowEditor }) => {
+import { connect } from "react-redux"
+
+const Display = ({ characterValues, setShowEditor }) => {
 
     const handleShowEditor = (e) => {
         e.preventDefault()
@@ -8,20 +10,26 @@ const Display = ({ playerInfo, setShowEditor }) => {
     return (
         <div>
             <div>
-                <p>Character Name: {playerInfo.characterName}</p>
+                <p>Character Name: {characterValues.characterName}</p>
             </div>
             <div>
-                <p>Class: {playerInfo.class}</p>
-                <p>Level: {playerInfo.level}</p>
-                <p>Background: {playerInfo.background}</p>
-                <p>Player Name: {playerInfo.playerName}</p>
-                <p>Race: {playerInfo.race}</p>
-                <p>Augment: {playerInfo.augment}</p>
-                <p>Experience: {playerInfo.exp}</p>
+                <p>Class: {characterValues.class}</p>
+                <p>Level: {characterValues.level}</p>
+                <p>Background: {characterValues.background}</p>
+                <p>Player Name: {characterValues.playerName}</p>
+                <p>Race: {characterValues.race}</p>
+                <p>Augment: {characterValues.augment}</p>
+                <p>Experience: {characterValues.exp}</p>
             </div>
             <button onClick={handleShowEditor}>Edit</button>
         </div>
     )
 }
 
-export default Display
+const mapStateToProps = (state) => {
+    return {
+        characterValues: state.characterValues
+    }
+}
+
+export default connect(mapStateToProps)(Display)

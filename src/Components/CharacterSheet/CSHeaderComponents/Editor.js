@@ -1,20 +1,14 @@
 import { useState } from 'react'
+import { connect } from 'react-redux'
+import { updateCharacterrValues } from '../../../redux-utils/actions'
+import axios from 'axios'
 
-const Editor = ({ setShowEditor, setPlayerInfo }) => {
-    const [characterValues, setCharacterValues] = useState({
-        characterName: '',
-        class: '',
-        level: '',
-        background: '',
-        playerName: '',
-        race: '',
-        augment: '',
-        exp: '',
-    })
+const Editor = ({ setShowEditor, updateCharacterrValues, characterValues }) => {
+    const [editorCharacterValues, setEditorCharacterValues] = useState(characterValues)
 
     const handleChange = (e) => {
         e.preventDefault()
-        setCharacterValues(prevValues => {
+        setEditorCharacterValues(prevValues => {
             return {
                 ...prevValues,
                 [e.target.name]: e.target.value
@@ -27,10 +21,17 @@ const Editor = ({ setShowEditor, setPlayerInfo }) => {
         setShowEditor(false)
     }
 
-    const handleSubmit = (e) => {
+    const handleSubmit = async (e) => {
         e.preventDefault()
-        setPlayerInfo(characterValues)
+        updateCharacterrValues(characterValues)
         setShowEditor(false)
+        try {
+            const response = await axios.get('http://localhost:7000/character-sheet')
+            console.log(response)
+        } catch(error) {
+            throw error
+        }
+
     }
 
     return (
@@ -40,7 +41,7 @@ const Editor = ({ setShowEditor, setPlayerInfo }) => {
                     Character Name:{' '}
                         <input
                             name='characterName'
-                            value={characterValues.characterName}
+                            value={editorCharacterValues.characterName}
                             onChange={handleChange}
                         />
                 </div>
@@ -49,44 +50,44 @@ const Editor = ({ setShowEditor, setPlayerInfo }) => {
                         Class:{' '}
                             <input
                                 name='class'
-                                value={characterValues.class}
+                                value={editorCharacterValues.class}
                                 onChange={handleChange}
                             />
                         Level:{' '}
                             <input
                                 name='level'
-                                value={characterValues.level}
+                                value={editorCharacterValues.level}
                                 onChange={handleChange}
                             />
                     </div>
                     Background:{' '}
                         <input
                             name='background'
-                            value={characterValues.background}
+                            value={editorCharacterValues.background}
                             onChange={handleChange}
                         />
                     Player Name:{' '}
                         <input
                             name='playerName'
-                            value={characterValues.playerName}
+                            value={editorCharacterValues.playerName}
                             onChange={handleChange}
                         />
                     Race:{' '}
                         <input
                             name='race'
-                            value={characterValues.race}
+                            value={editorCharacterValues.race}
                             onChange={handleChange}
                         />
                     Augment:{' '}
                         <input
                             name='augment'
-                            value={characterValues.augment}
+                            value={editorCharacterValues.augment}
                             onChange={handleChange}
                         />
                     Experience:{' '}
                         <input
                             name='exp'
-                            value={characterValues.exp}
+                            value={editorCharacterValues.exp}
                             onChange={handleChange}
                         />
                 </div>
@@ -97,4 +98,10 @@ const Editor = ({ setShowEditor, setPlayerInfo }) => {
     )
 }
 
-export default Editor
+const mapStateToProps = (state) => {
+    return {
+        characterValues: state.characterValues
+    }
+}
+
+export default connect(mapStateToProps, { updateCharacterrValues })(Editor)

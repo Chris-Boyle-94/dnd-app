@@ -5,6 +5,7 @@ import Editor from './CSHeaderComponents/Editor'
 const CharacterSheetHeader = () => {
     const [showEditor, setShowEditor] = useState(false)
     const [playerInfo, setPlayerInfo] = useState({})
+
     return (
         <div>
             {
