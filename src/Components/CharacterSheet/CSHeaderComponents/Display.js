@@ -1,11 +1,21 @@
-import { connect } from "react-redux"
+import { useState, useEffect } from 'react';
+import { connect } from 'react-redux';
+import axios from 'axios';
 
-const Display = ({ characterValues, setShowEditor }) => {
+const Display = ({ setShowEditor }) => {
+    const [characterValues, setCharacterValues] = useState({})
 
     const handleShowEditor = (e) => {
         e.preventDefault()
         setShowEditor(true)
     }
+
+    useEffect(() => {
+        axios.get('http://localhost:7000/character-sheet')
+            .then(res => setCharacterValues(res.data[0]))
+            .catch(err => console.log(err))
+    }, [])
+
 
     return (
         <div>

@@ -5,15 +5,11 @@ const Attributes = () => {
     return (
         <div className='Attributes'>
             {attributeLabels.map(attr => {
-                const className = `Attributes__${attr.slice(0,3,0)}`
-                const mod = `Attributes__${attr.slice(0,3,0)}__mod`
-                const val = `Attributes__${attr.slice(0,3,0)}__val`
-
                 return (
-                    <div className={className} key={attr}>
+                    <div className='Attributes__stat' key={attr}>
                         <h3>{attr.toLocaleUpperCase()}</h3>
-                        <p className={mod}>Modifier: </p>
-                        <p className={val}>Value: </p>
+                        <p className='Attributes__stat__mod'>Modifier: </p>
+                        <p className='Attributes__stat__val'>Value: </p>
                     </div>
                 )
             })}
@@ -21,4 +17,4 @@ const Attributes = () => {
     )
 }
 
-export default Attributes
+export default Attributes;
