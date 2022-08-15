@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { updateCharacterrValues } from '../../redux-utils/actions'
+import { updateCharacterrValues } from '../../../redux-utils/actions'
 // import axios from 'axios'
 
 const Editor = ({ setShowEditor, updateCharacterrValues, characterValues }) => {

@@ -1,5 +1,6 @@
-import Attributes from "../Components/StatsPanelComponents/Attributes";
-import Proficiencies from "../Components/StatsPanelComponents/Proficiencies";
+import React from 'react';
+import Attributes from "../Components/CharacterSheetComponents/StatsPanelComponents/Attributes";
+import Proficiencies from "../Components/CharacterSheetComponents/StatsPanelComponents/Proficiencies";
 
 const StatsPanelView = () => {
     return (

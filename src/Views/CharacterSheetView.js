@@ -1,4 +1,5 @@
-import CharacterSheetHeader from "../Components/CharacterSheet/CharacterSheetHeader";
+import React from 'react';
+import CharacterSheetHeader from "../Components/CharacterSheetComponents/HeaderComponents/CharacterSheetHeader";
 import StatsPanelView from './StatsPanelView';
 
 const CharacterSheet = () => {
