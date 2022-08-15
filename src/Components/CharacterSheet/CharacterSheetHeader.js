@@ -1,10 +1,10 @@
-import { useState } from 'react'
-import Display from './CSHeaderComponents/Display'
-import Editor from './CSHeaderComponents/Editor'
+import React, { useState } from 'react';
+import Display from './Display';
+import Editor from './Editor';
 
 const CharacterSheetHeader = () => {
-    const [showEditor, setShowEditor] = useState(false)
-    const [playerInfo, setPlayerInfo] = useState({})
+    const [showEditor, setShowEditor] = useState(false);
+    const [playerInfo, setPlayerInfo] = useState({});
 
     return (
         <div>
@@ -19,4 +19,4 @@ const CharacterSheetHeader = () => {
     )
 }
 
-export default CharacterSheetHeader
+export default CharacterSheetHeader;

@@ -1,7 +1,7 @@
-import { useState } from 'react'
+import React, { useState } from 'react'
 import { connect } from 'react-redux'
-import { updateCharacterrValues } from '../../../redux-utils/actions'
-import axios from 'axios'
+import { updateCharacterrValues } from '../../redux-utils/actions'
+// import axios from 'axios'
 
 const Editor = ({ setShowEditor, updateCharacterrValues, characterValues }) => {
     const [editorCharacterValues, setEditorCharacterValues] = useState(characterValues)
@@ -25,13 +25,6 @@ const Editor = ({ setShowEditor, updateCharacterrValues, characterValues }) => {
         e.preventDefault()
         updateCharacterrValues(characterValues)
         setShowEditor(false)
-        try {
-            const response = await axios.get('http://localhost:7000/character-sheet')
-            console.log(response)
-        } catch(error) {
-            throw error
-        }
-
     }
 
     return (

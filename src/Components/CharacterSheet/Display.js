@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import React, { useState, useEffect } from 'react';
 import { connect } from 'react-redux';
 import axios from 'axios';
 
@@ -36,10 +36,4 @@ const Display = ({ setShowEditor }) => {
     )
 }
 
-const mapStateToProps = (state) => {
-    return {
-        characterValues: state.characterValues
-    }
-}
-
-export default connect(mapStateToProps)(Display)
+export default Display;
